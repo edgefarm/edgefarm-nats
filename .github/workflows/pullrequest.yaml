@@ -1,4 +1,4 @@
-name: anck pullrequest
+name: pullrequest
 on:
   pull_request:
     branches:
