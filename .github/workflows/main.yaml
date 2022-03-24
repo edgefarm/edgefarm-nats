@@ -1,8 +1,9 @@
-name: release
+name: Release docker image
 on:
   push:
     branches:
       - main
+      - beta
 
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
