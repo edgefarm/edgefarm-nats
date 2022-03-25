@@ -38,6 +38,7 @@ jobs:
           docker buildx build \
              -f Dockerfile \
              --push \
+             --platform ${ARCHITECTURES} \
              --build-arg NATS_LEAFNODE_REGISTRY_VERSION=${NATS_LEAFNODE_REGISTRY_VERSION} \
              --build-arg NATS_SERVER_VERSION=${NATS_SERVER_VERSION} \
              -t ${DOCKER_IMAGE}:${GITHUB_SHA::8} \
