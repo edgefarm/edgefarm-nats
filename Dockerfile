@@ -16,6 +16,7 @@ COPY cmd/run-leafnode-registry.sh /cmd/run-leafnode-registry.sh
 
 COPY entrypoint.sh   /entrypoint.sh
 RUN chmod +x /entrypoint.sh /cmd/action.sh /cmd/monitor.sh /cmd/run-nats.sh /cmd/run-leafnode-registry.sh
+RUN mkdir -p /var/run/nats
 
 COPY nats.json /config/nats.json
 ENTRYPOINT ["/entrypoint.sh"]
