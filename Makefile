@@ -7,9 +7,11 @@ ifneq (,$(wildcard ./version.env))
 endif
 
 build: ## build docker image (prefix dev-)
+	@echo "${NATS_LEAFNODE_REGISTRY_IMAGE}"
 	@echo "${NATS_LEAFNODE_REGISTRY_VERSION}"
 	@echo "${NATS_SERVER_VERSION}"
-	docker build -f Dockerfile --build-arg NATS_LEAFNODE_REGISTRY_VERSION=${NATS_LEAFNODE_REGISTRY_VERSION} --build-arg NATS_SERVER_VERSION=${NATS_SERVER_VERSION} -t ${DOCKER_IMAGE}:${VERSION} -t ${DOCKER_IMAGE}:latest . 
+	echo docker build -f Dockerfile --build-arg NATS_LEAFNODE_REGISTRY_IMAGE=${NATS_LEAFNODE_REGISTRY_IMAGE} --build-arg NATS_LEAFNODE_REGISTRY_VERSION=${NATS_LEAFNODE_REGISTRY_VERSION} --build-arg NATS_SERVER_VERSION=${NATS_SERVER_VERSION} -t ${DOCKER_IMAGE}:${VERSION} -t ${DOCKER_IMAGE}:latest . 
+
 
 push: build ## push docker image (prefix dev-)
 	docker push ${DOCKER_IMAGE}:${VERSION}

@@ -1,6 +1,7 @@
 ARG NATS_LEAFNODE_REGISTRY_VERSION=latest
 ARG NATS_SERVER_VERSION=latest
-FROM ci4rail/nats-leafnode-registry:$NATS_LEAFNODE_REGISTRY_VERSION as nats-leafnode-registry
+ARG NATS_LEAFNODE_REGISTRY_IMAGE=ci4rail/nats-leafnode-registry
+FROM $NATS_LEAFNODE_REGISTRY_IMAGE:$NATS_LEAFNODE_REGISTRY_VERSION as nats-leafnode-registry
 
 FROM nats:$NATS_SERVER_VERSION as nats
 
