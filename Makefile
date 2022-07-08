@@ -1,8 +1,8 @@
 SHELL := /bin/bash
 VERSION ?= $(shell git describe --match=NeVeRmAtCh --always --abbrev=8 --dirty)
 DOCKER_IMAGE ?= ci4rail/dev-edgefarm-nats
-ifneq (,$(wildcard ./version.env))
-    include version.env
+ifneq (,$(wildcard ./.env))
+    include .env
     export
 endif
 
@@ -10,7 +10,7 @@ build: ## build docker image (prefix dev-)
 	@echo "${NATS_LEAFNODE_REGISTRY_IMAGE}"
 	@echo "${NATS_LEAFNODE_REGISTRY_VERSION}"
 	@echo "${NATS_SERVER_VERSION}"
-	echo docker build -f Dockerfile --build-arg NATS_LEAFNODE_REGISTRY_IMAGE=${NATS_LEAFNODE_REGISTRY_IMAGE} --build-arg NATS_LEAFNODE_REGISTRY_VERSION=${NATS_LEAFNODE_REGISTRY_VERSION} --build-arg NATS_SERVER_VERSION=${NATS_SERVER_VERSION} -t ${DOCKER_IMAGE}:${VERSION} -t ${DOCKER_IMAGE}:latest . 
+	docker build -f Dockerfile --build-arg NATS_LEAFNODE_REGISTRY_IMAGE=${NATS_LEAFNODE_REGISTRY_IMAGE} --build-arg NATS_LEAFNODE_REGISTRY_VERSION=${NATS_LEAFNODE_REGISTRY_VERSION} --build-arg NATS_SERVER_VERSION=${NATS_SERVER_VERSION} -t ${DOCKER_IMAGE}:${VERSION} -t ${DOCKER_IMAGE}:latest . 
 
 
 push: build ## push docker image (prefix dev-)
