@@ -5,7 +5,7 @@ FROM $NATS_LEAFNODE_REGISTRY_IMAGE:$NATS_LEAFNODE_REGISTRY_VERSION as nats-leafn
 
 FROM nats:$NATS_SERVER_VERSION as nats
 
-FROM alpine:3.15
+FROM alpine:3.16
 COPY --from=nats-leafnode-registry /registry /registry
 COPY --from=nats /usr/local/bin/nats-server /nats-server
 
