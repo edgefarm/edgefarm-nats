@@ -54,7 +54,7 @@ jobs:
         uses: xom9ikk/dotenv@v1.0.2
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@42863b1282f7046f6c1ec9222965bbceafae3bb8
+        uses: docker/build-push-action@67af6dc1d38f334ae6935c94587e8a5b45a81a0e
         with:
           context: .
           push: true
